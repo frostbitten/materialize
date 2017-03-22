@@ -130,6 +130,10 @@
               var prev_index = index;
               index = $tabs_wrapper.index(item);
               $active = $links.eq(index);
+              $content = $(Materialize.escapeHash($active[0].hash));
+              if ($content !== undefined && typeof(options.onShow) === "function") {
+                options.onShow.call($active[0], $content);
+              }
               animateIndicator(prev_index);
             }
           },
